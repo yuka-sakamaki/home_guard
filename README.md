@@ -1,25 +1,36 @@
-# README
+### 本番環境での確認方法
+https://home-guard.herokuapp.com/
+- ヘッダーのユーザーメニューより、登録をしてください
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### ローカル環境での確認方法
 
-Things you may want to cover:
+```
+git clone git@github.com:yuka-sakamaki/home_guard.git
+```
+```
+docker-compose build
+```
+```
+docker-compose up -d
+```
+下記のように表示されたら、http://localhost:3000/
+にアクセスしてください
+```
+Starting home-guard_db_1 ... done
+Recreating home-guard_web_1 ... done
+```
 
-* Ruby version
+# HOME GUARD👮🏠
+### サービス概要
+おうち時間でのやること(家事/買い物/仕事の準備/運動...etc)のタスクと進捗管理ができるアプリケーションです。
 
-* System dependencies
+### 登場人物
+仕事の時間が不規則で、毎日のルーティーンを見失いがちな人
 
-* Configuration
+###　　ユーザーが抱える課題
+- 仕事に追われすぎて、家でやりたいこと/やらなければいけない作業をどうしても後回しにしてしまう
+- 空いた時間にやらなければいけないことの優先順位がつけられない（何から手をつければいいかわからない）
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# home_guard
+### 解決方法と望む未来
+事前に決めておいたおうち時間にやりたいことに対して、やったorやらないの記録をつけることで、達成度を確認することができる　</br>
+→　「今日は何もできなかった...」という虚無感を軽減する。また自分のできることの限界を知ることができる。
