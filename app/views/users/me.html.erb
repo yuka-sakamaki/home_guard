@@ -1,2 +1,8 @@
-<h2>マイページ</h2>
-<%= @current_user.name %>
+<div class="d-flex align-items-center">
+  <div class="mx-auto" style="width: 100%; font-size: 30px; margin: 10px;">
+    👮こんにちは<%= @current_user.name %>さん
+  </div>
+</div>
+<a href="/boards/new" class="btn btn-outline-dark">タスクを作る</a>
+
+
