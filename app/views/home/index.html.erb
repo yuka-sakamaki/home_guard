@@ -1,13 +1,30 @@
+<% unless @current_user %>
 <div class="d-flex align-items-center">
+
   <div class="mx-auto" style="width: 100%; font-size: 30px; margin: 10px;">
-    👮ログインしてタスクを追加しましょう
+    👮ログインしてやることを追加しましょう
   </div>
 </div>
 <%= render partial: 'users/login_form' %>
+<% end %>
+
+<dl class="dl-horizontal">
+<dt>ビックバイパー</dt>
+<dd>
+  <div class="progress">
+    <div class="progress-bar" style="width: 10%;">
+      50
+    </div>
+  </div>
+</dd>
+
+</dl>
+
+<%= @archivement %>
 
 <div class="d-flex align-items-center">
   <div class="mx-auto" style="width: 100%; font-size: 30px; margin: 10px;">
-    🏠現在登録中のタスク一覧
+    🏠現在登録中のやること一覧
   </div>
 </div>
 
@@ -18,21 +35,21 @@
 <table class="table table-hover boards__table">
   <thead class="thead-light">
     <tr>
-      <th>ID</th>
-      <th>タイトル</th>
+      <th>やること</th>
       <th>作成者</th>
       <th>作成日時</th>
       <th>更新日時</th>
+      <th>ステータス</th>
     </tr>
   </thead>
   <tbody>
     <% @boards.each do |board| %>
       <tr>
-        <td><%= board.id %></td>
         <td><%= board.title %></td>
         <td><%= board.name %></td>
         <td><%= board.created_at.to_s(:datetime_jp) %></td>
         <td><%= board.updated_at.to_s(:datetime_jp) %></td>
+        <td><%= board.status ? "完了！": "これからやる" %></td>
       </tr>
     <% end %>
   </tbody>

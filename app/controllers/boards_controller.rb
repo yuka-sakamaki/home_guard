@@ -3,7 +3,7 @@ class BoardsController < ApplicationController
 
   def index
     @boards = params[:tag_id].present? ? Tag.find(params[:tag_id]).boards : Board.all
-    @boards = @boards.page(params[:page])
+    @boards = @boards.page(params[:page]).order(updated_at: :DESC)
   end
 
   def new
@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
   def create
     board = Board.new(board_params)
     if board.save
-      flash[:notice] = "「#{board.title}」のタスクを作成しました"
+      flash[:notice] = "「#{board.title}」のやることを作成しました"
       redirect_to board
     else
       redirect_to :back, flash: {
@@ -33,6 +33,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
+      flash[:notice] = "「#{@board.title}」のやることを更新しました"
       redirect_to @board
     else
       redirect_to :back, flash: {
@@ -44,13 +45,13 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    redirect_to boards_path, flash: { notice: "「#{@board.title}」のタスクが削除されました" }
+    redirect_to boards_path, flash: { notice: "「#{@board.title}」のやることが削除されました" }
   end
 
   private
 
   def board_params
-    params.require(:board).permit(:name, :title, :body, tag_ids: [])
+    params.require(:board).permit(:name, :title, :body, :status, tag_ids: [])
   end
 
   def set_target_board

@@ -2,15 +2,19 @@
 
 <%= form_for board do |f| %>
   <div class="form-group">
+  　<%= f.label :status, '完了したらチェックをつけましょう👉' %>
+    <%= f.check_box :status, {}, "true", "false" %>
+　</div>
+  <div class="form-group">
     <%= f.label :name, '名前' %>
-    <%= f.text_field :name, class: 'form-control' %>
+    <%= f.text_field :name, class: 'form-control', value: @current_user.name %>
   </div>
   <div class="form-group">
-    <%= f.label :title, 'タイトル' %>
+    <%= f.label :title, 'やること' %>
     <%= f.text_field :title, class: 'form-control' %>
   </div>
   <div class="form-group">
-    <%= f.label :body, '本文' %>
+    <%= f.label :body, '詳細' %>
     <%= f.text_area :body, class: 'form-control', rows: 10 %>
   </div>
   <div class="form-group">
