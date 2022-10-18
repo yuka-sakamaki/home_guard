@@ -4,6 +4,6 @@ class HomeController < ApplicationController
     @boards = @boards.page(params[:page])
     all_boards_count = Board.all.length
     finished_boards_count = Board.where(status: true).count
-    @archivement = finished_boards_count / all_boards_count  * 100
+    @archivement = finished_boards_count.to_f / all_boards_count.to_f  * 100
   end
 end
