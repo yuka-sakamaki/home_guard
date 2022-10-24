@@ -3,6 +3,12 @@
     👮こんにちは<%= @current_user.name %>さん
   </div>
 </div>
+<div class="mx-auto" style="width: 100%; font-size: 30px; margin: 10px;">
+    🏃‍♂️現在のやること達成度　：
+    <span class="badge text-bg-primary"><%= @archivement.to_f.round(2) %>%</span>
+    <span><%= @test %></span>
+</div>
+<br>
 <a href="/boards/new" class="btn btn-outline-dark">やることを作る</a>
 
 

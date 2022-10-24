@@ -16,7 +16,14 @@ class UsersController < ApplicationController
     end
   end
 
+  #TODO: add users archivement calc
   def me
+    all_boards_count = Board.all.length
+    finished_boards_count = Board.where(status: true).count
+    @archivement = finished_boards_count.to_f / all_boards_count.to_f  * 100
+    # all_boards_count = Board.where(name: 'y').length
+    # finished_boards_count = Board.where(status: true).where(name: 'y').count
+    # @archivement = finished_boards_count.to_f / all_boards_count.to_f  * 100
   end
 
   private
