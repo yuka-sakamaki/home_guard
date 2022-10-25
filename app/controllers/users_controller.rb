@@ -16,14 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
-  #TODO: add users archivement calc
   def me
-    all_boards_count = Board.all.length
-    finished_boards_count = Board.where(status: true).count
-    @archivement = finished_boards_count.to_f / all_boards_count.to_f  * 100
-    # all_boards_count = Board.where(name: 'y').length
-    # finished_boards_count = Board.where(status: true).where(name: 'y').count
-    # @archivement = finished_boards_count.to_f / all_boards_count.to_f  * 100
+    user = User.find_by(id: session[:user_id])
+    all_boards_count_mypage = Board.where(name: user.name).length
+    finished_boards_count_mypage = Board.where(status: true).where(name: user.name).count
+    @archivement_mypage = finished_boards_count_mypage.to_f / all_boards_count_mypage.to_f  * 100
   end
 
   private
